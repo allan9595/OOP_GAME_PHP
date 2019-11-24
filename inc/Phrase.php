@@ -62,12 +62,12 @@ class Phrase {
 
     public function checkLetter($letter){
         //if in the selected array, there is one selected value included in the currentPhrase, the return true
-        if(strpos(($this->currentPhrase), $letter)){
+        $splitedPhrase = str_split($this->currentPhrase);
+        if(in_array($letter, $splitedPhrase)){
             return true;
         }else{
             return false;
         }
-        
     }
 
     public function getCurrentphrase(){

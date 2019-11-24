@@ -1,9 +1,8 @@
 <?php
-    include('inc/Phrase.php');
-    include('inc/Game.php');
-
     //start session to store phrase and selected keys and pass them to the Phrase object for env
     session_start();
+    include('inc/Phrase.php');
+    include('inc/Game.php');
 
     if(filter_input(INPUT_POST, 'key', FILTER_SANITIZE_STRING) !== NULL){
         $_SESSION['selected'][] = filter_input(INPUT_POST, 'key', FILTER_SANITIZE_STRING);
