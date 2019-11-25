@@ -46,7 +46,7 @@ class Game {
         }
     }
     public function checkForLose(){
-        //check if the lives eq 0, if does, the game ove
+        //check if the lives eq 0, if does, the game over
         if($_SESSION['lives'] == 0){
             return true;
         }else{

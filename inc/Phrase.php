@@ -20,7 +20,11 @@ class Phrase {
         if(isset($phrase)){
             $this->currentPhrase = strtolower($phrase);
         }else{
-            $this->currentPhrase = strtolower($this->availablePhrases[random_int($this->min, $this->max)]);
+            $this->currentPhrase = strtolower(
+                (
+                    $this->availablePhrases[array_rand($this->availablePhrases)]
+                )
+            );
         }
 
         //set the selected key to the selected array
