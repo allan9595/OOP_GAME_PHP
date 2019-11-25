@@ -9,23 +9,33 @@
     }
 
     if(isset($_SESSION['phrase']) && isset($_SESSION['selected'])){
-        $test = new Phrase($_SESSION['phrase'],$_SESSION['selected']);
+        $phrase = new Phrase($_SESSION['phrase'],$_SESSION['selected']);
     }else{
-        $test = new Phrase(NULL,NULL);
+        $phrase = new Phrase(NULL,NULL);
     }
 
-    $_SESSION['phrase'] = $test->getCurrentphrase();
-
-    $game = new Game($test);
+    $_SESSION['phrase'] = $phrase->getCurrentphrase();
    
-     var_dump($_SESSION['phrase']);
-     //var_dump($_SESSION['selected']);
-    // var_dump($test->getCurrentphrase());
-     var_dump($test->getCurrentselected());
-    // var_dump($test->checkLetter('a'));
-    //var_dump($test->addPhraseToDisplay());
+    $game = new Game($phrase);
 
+    //set the default lives to lives sessions
     
+    $_SESSION['lives'] = $game->getLives();
+    
+    //anti-cheating manchanism
+    $_SESSION['check_win_status'] = $game->checkForWin();
+
+    if(count($phrase->getCurrentselected()) !== 0){
+         //get the incorrect letters from selected then set it to the live_session
+        $incorrectSelected = [];
+        foreach($phrase->getCurrentselected() as $value){
+            if($phrase->checkLetter($value) == false){
+                $incorrectSelected[] = $value;
+            }
+        }
+        $_SESSION['lives'] = $_SESSION['lives'] - count($incorrectSelected);
+        $_SESSION['lost'] = count($incorrectSelected);
+    }  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +43,7 @@
         <meta charset="utf-8">
         <title>Phrase Hunter</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="css/styles.css" rel="stylesheet">
+        <link href="css/styles.css?version=51" rel="stylesheet">
         <link href="css/animate.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     </head>
@@ -44,11 +54,12 @@
                 <h2 class="header">Phrase Hunter</h2>
             </div>
             <?php
-                $test->addPhraseToDisplay();
+                $game->gameOver();
+                $phrase->addPhraseToDisplay();
                 $game->displayKeyboard();
-                echo $game->displayScore();
-                $game->checkForWin();
+                $game->displayScore();
             ?>
         </div>
+        <script src="js/script.js"></script>
     </body>
 </html>

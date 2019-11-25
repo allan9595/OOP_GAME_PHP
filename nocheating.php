@@ -1,7 +1,3 @@
-<?php
-session_start();
-session_destroy();
-?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -13,11 +9,20 @@ session_destroy();
 		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 	</head>
 
-	<body>
+	<body class="lose">
 		<div class="main-container">
 			<h2 class="header">Phrase Hunter</h2>
+            <?php
+               session_start();
+               if(isset($_SESSION['check_win_status'])){
+                echo "<h1 id='game-over-message'>Oops..no cheating please! Click to play again!</h1>";
+               }else{
+                echo "<h1 id='game-over-message'>Oops..You refreshed page! Click to play again!</h1>";
+               }
+               session_destroy();
+            ?>
             <form action="play.php" method="post">
-                <input id="btn__reset" type="submit" value="Start Game" />
+                <input id="btn__reset" type="submit" value="Play Again" />
             </form>
 		</div>
 	</body>

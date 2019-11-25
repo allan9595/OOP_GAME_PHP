@@ -28,6 +28,7 @@ body {
   flex-direction: column;
   display: flex;
   height: 100vh;
+  background: #08423d;
 }
 
 li, ol, ul {
@@ -92,7 +93,7 @@ input[type=submit].correct {
 /* Title */
 
 .header {
-  color: #3a3f58;
+  color: #fff;
 }
 
 
@@ -119,7 +120,7 @@ input[type=submit].correct {
 
 .show {
   color: #fff;
-  background-color: #4ac0d5;
+  background-color: #b55a33;
   font-size: 20px;
   height: 65px;
   width: 65px;
@@ -209,4 +210,15 @@ input[type=submit].correct {
 
 .lose a {
   color: var(--color-lose);
+}
+
+
+#phrase ul li.hide{
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Old versions of Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome, Opera and Firefox */
 }
