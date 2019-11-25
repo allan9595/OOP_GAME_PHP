@@ -2,8 +2,6 @@
 class Phrase {
     private $currentPhrase;
     private $selected = []; 
-    private $max = 8;
-    private $min = 0;
     public $availablePhrases = [
         "I love my puppy",
         "I love startbucks",
