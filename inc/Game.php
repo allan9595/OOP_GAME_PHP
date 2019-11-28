@@ -30,28 +30,19 @@ class Game {
 
         $currentSelectedLength = count($this->phrase->getCurrentselected());
         $currentSelectedCorrect = [];
-        //echo $currentPhraseLength;
-
+     
         foreach($this->phrase->getCurrentselected() as $selected){
             if($this->phrase->checkLetter($selected)){
                 $currentSelectedCorrect[] = $selected;
             }
         }
-        //echo count($currentSelectedCorrect);
+        
         //check to see if the length of selected array matches the length of the phrase array, if does, which means win
-        if($currentPhraseLength == count($currentSelectedCorrect)){
-            return true;
-        }else{
-            return false;
-        }
+        return $currentPhraseLength == count($currentSelectedCorrect);
     }
     public function checkForLose(){
         //check if the lives eq 0, if does, the game over
-        if($_SESSION['lives'] == 0){
-            return true;
-        }else{
-            return false;
-        }
+        return $_SESSION['lives'] == 0;
     }
 
     //redirect to differnt page based on the result

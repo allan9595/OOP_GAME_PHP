@@ -4,6 +4,10 @@
 
 The OOP_GAME_PHP is a simple phrase guessing game allows the players to guess a collection of pre-defined phrases. This project build with PHP and demonstrated my understanding and ability to code in PHP object oriented programming. Hope you like it and happy coding!
 
+Note: 
+
+Teamtreehouse.com PHP Techdegree exceeding grade changes: background colors and keyboard styles of the app have been customized as my own.
+
 ## How to Play
 
 git clone https://github.com/allan9595/OOP_GAME_PHP.git
